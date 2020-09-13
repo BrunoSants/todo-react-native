@@ -1,6 +1,6 @@
 import React from 'react';
-import { View } from 'react-native';
+import ToDoList from './pages/ToDoList';
 
-const App: React.FC = () => <View />;
+const App: React.FC = () => <ToDoList />;
 
 export default App;
