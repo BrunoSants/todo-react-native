@@ -1,6 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { CheckBox } from 'react-native';
-
+import CheckBox from '@react-native-community/checkbox';
 import { Container, Card, CardText } from './styles';
 
 interface ToDo {
@@ -18,15 +17,11 @@ const ToDoList: React.FC = () => {
 
     const handleStatus = useCallback(
         (id) => {
-            console.log('id todo', id, '\n listtodoOld', toDo);
             const newToDo = toDo.map((todo) => {
                 return todo.id === id
                     ? { ...todo, status: !todo.status }
                     : todo;
             });
-
-            console.log('newListTodo', newToDo);
-
             setToDo(newToDo);
         },
         [toDo],
@@ -37,10 +32,9 @@ const ToDoList: React.FC = () => {
             {toDo.map((item: ToDo) => (
                 <Card key={item.id}>
                     <CheckBox
+                        disabled={false}
                         value={item.status}
-                        onChange={() => {
-                            handleStatus(item.id);
-                        }}
+                        onValueChange={() => handleStatus(item.id)}
                     />
                     <CardText>{item.description}</CardText>
                 </Card>
